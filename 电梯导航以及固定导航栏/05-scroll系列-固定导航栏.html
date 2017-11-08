@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+        .box{
+            width:1423px;
+            margin: 0 auto;
+        }
+        img {
+            vertical-align: top;
+        }
+        .top {
+            width: 1500px;
+        }
+        .main {
+            width: 1000px;
+            margin: 0 auto;
+        }
+        #Q-nav {
+            width: 1500px;
+            overflow: hidden;
+        }
+        .fixed {
+            position: fixed;
+            top: 0;
+        }
+    </style>
+    <script>
+       window.onload=function () {
+           var img1=document.getElementById("top");
+           var img2=document.getElementById("Q-nav");
+           var img3=document.getElementById("main");
+           window.onscroll=function () {
+               if(scroll().top>img1.scrollHeight){
+                   img2.className="fixed";
+                   img3.style.paddingTop=img2.scrollHeight+"px";
+               }else{
+                   img2.className="";
+                   img3.style.paddingTop=0;
+               }
+
+           }
+       }
+
+    </script>
+    <script src="jquery-1.11.1-min.js"></script>
+
+</head>
+<body>
+
+<div class="box">
+    <!--第一张图片-->
+    <div class="top" id="top">
+        <img src="../images/top.png" alt=""/>
+    </div>
+    <!--第二张图片-->
+    <div id="Q-nav">
+        <img src="../images/nav.png" alt=""/>
+    </div>
+    <!--第三张图片-->
+    <div class="main" id="main">
+        <img src="../images/main.png" alt=""/>
+    </div>
+
+
+</div>
+
+
+</body>
+</html>

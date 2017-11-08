@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        html, body, ul, ul li {
+            width: 100%;
+            height: 100%;
+        }
+
+        ul li {
+            text-align: center;
+            font: 700 200px/600px simsun;
+        }
+
+        ol {
+            position: fixed;
+            top: 50px;
+            left: 50px;
+        }
+
+        ol li {
+            width: 50px;
+            height: 50px;
+            border: 1px solid #000;
+            text-align: center;
+            cursor: pointer;
+            margin-top: -1px;
+            font: 22px/50px "simsun";
+        }
+
+        img {
+            display: none;
+            position: fixed;
+            right: 80px;
+            bottom: 100px;
+            cursor: pointer;
+            z-index: 100;
+        }
+    </style>
+    <script src="jquery-1.11.1-min.js"></script>
+    <script>
+        window.onload = function () {
+            //需求1：让ul中的li和ol中的li对应索引值的颜色一样;
+            //需求2：点击ol中的li，让页面跳转到ul对应索引值的li上;
+
+            //获取元素
+            var ul = document.getElementsByTagName("ul")[0];
+            var ulLiArr = ul.children;
+            var ol = document.getElementsByTagName("ol")[0];
+            var olLiArr = ol.children;
+
+            //定义一个颜色数组
+            var colorArr = ["skyblue", "lightgreen", "pink", "orange", "#ff59fc"];
+            for (var i = 0; i < olLiArr.length; i++) {
+                olLiArr[i].index = i;
+                //需求1：让ul中的li和ol中的li对应索引值的颜色一样;
+                olLiArr[i].style.backgroundColor = colorArr[i];
+                ulLiArr[i].style.backgroundColor = colorArr[i];
+
+                //需求2：点击ol中的li，让页面跳转到ul对应索引值的li上;
+                olLiArr[i].onmouseover = function () {
+                    animates(window, ulLiArr[this.index].offsetTop);
+                    this.style.backgroundColor = "#fff";
+                };
+                olLiArr[i].onmouseout = function () {
+                    this.style.backgroundColor = colorArr[this.index];
+                }
+
+            }
+            var img = document.getElementsByTagName("img")[0];
+            window.onscroll = function () {
+                if (scroll().top > 1500) {
+                    img.style.display = "block";
+                } else {
+                    img.style.display = "";
+                }
+                img.onclick = function () {
+                    animates(window, 0);
+                }
+
+
+            }
+        }
+
+
+    </script>
+</head>
+<body>
+<img src="../images/Top.jpg" alt=""/>
+<ul>
+    <li>鞋子区域</li>
+    <li>帽子区域</li>
+    <li>裙子区域</li>
+    <li>裤子区域</li>
+    <li>袜子区域</li>
+</ul>
+
+<ol>
+    <li>鞋子</li>
+    <li>帽子</li>
+    <li>裙子</li>
+    <li>裤子</li>
+    <li>袜子</li>
+</ol>
+
+
+</body>
+</html>
