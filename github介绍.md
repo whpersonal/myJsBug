@@ -21,7 +21,7 @@ $ git --version
 
 如果看到能输出一个版本号 `git version 2.10.1.windows.1`（版本不一定一致），说明没有问题。
 
-### 1.3 初始设置
+### 1.3 初始设置1232435
 
 ```bash
 $ git config --global user.name "yourname"
